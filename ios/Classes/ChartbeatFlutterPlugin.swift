@@ -2,12 +2,12 @@ import Flutter
 import UIKit
 import Chartbeat
 
-public class SwiftMyChartbeatPlugin: NSObject, FlutterPlugin {
+public class ChartbeatFlutterPlugin: NSObject, FlutterPlugin {
   private var chartbeatTracker: CBTracker?
 
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "my_chartbeat_plugin", binaryMessenger: registrar.messenger())
-    let instance = SwiftMyChartbeatPlugin()
+    let channel = FlutterMethodChannel(name: "chartbeat_flutter", binaryMessenger: registrar.messenger())
+    let instance = ChartbeatFlutterPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
@@ -36,17 +36,13 @@ public class SwiftMyChartbeatPlugin: NSObject, FlutterPlugin {
   }
 
  private func initializeTracker(accountID: String, domain: String) {
-    CBTracker.shared().setupTracker(withAccountId: Int(accountID) ?? 0, domain: domain)
+    CBTracker.shared().setupTracker(withAccountId: Int32(accountID) ?? 0, domain: domain) // Changed Int to Int32
 }
 
-  private func trackView(viewId: String, title: String, result: @escaping FlutterResult) {
-    guard let tracker = chartbeatTracker else {
-      result(FlutterError(code: "TRACKER_NOT_INITIALIZED", message: "Chartbeat tracker is not initialized.", details: nil))
-      return
-    }
+private func trackView(viewId: String, title: String, result: @escaping FlutterResult) {
+    // Use the shared instance directly, removing the unnecessary guard statement.
     let dummyView = UIView()
-
-    tracker.trackView(dummyView, viewId: viewId, title: title)
-    result(nil) // Signal successful view tracking after ensuring tracker is initialized
-  }
+    CBTracker.shared().trackView(dummyView, viewId: viewId, title: title)
+    result(nil) // Signal successful view tracking
+}
 }

@@ -1,11 +1,17 @@
 PODS:
+  - Chartbeat (1.5.0)
   - chartbeat_flutter (0.0.1):
+    - Chartbeat (~> 1.5.0)
     - Flutter
   - Flutter (1.0.0)
 
 DEPENDENCIES:
   - chartbeat_flutter (from `.symlinks/plugins/chartbeat_flutter/ios`)
   - Flutter (from `Flutter`)
+
+SPEC REPOS:
+  trunk:
+    - Chartbeat
 
 EXTERNAL SOURCES:
   chartbeat_flutter:
@@ -14,7 +20,8 @@ EXTERNAL SOURCES:
     :path: Flutter
 
 SPEC CHECKSUMS:
-  chartbeat_flutter: f147a2493dad0a39188bad118cfa7f1619a1035f
+  Chartbeat: 506471851597f18f24f21d49716aa16ae6545365
+  chartbeat_flutter: e2601fc3dd1a2f2a6d7bf1371e0109a05044baa6
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
 
 PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3

@@ -11,7 +11,24 @@ class MethodChannelChartbeatFlutter extends ChartbeatFlutterPlatform {
 
   @override
   Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
+    final version =
+        await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
+  }
+
+  @override
+  Future<void> initializeTracker(String accountID, String domain) async {
+    await methodChannel.invokeMethod('initializeTracker', {
+      'accountID': accountID,
+      'domain': domain,
+    });
+  }
+
+  @override
+  Future<void> trackView(String viewId, String title) async {
+    await methodChannel.invokeMethod('trackView', {
+      'viewId': viewId,
+      'title': title,
+    });
   }
 }

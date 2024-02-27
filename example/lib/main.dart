@@ -48,7 +48,13 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () async {},
+          onPressed: () async {
+            await _chartbeatFlutterPlugin.initializeTracker(
+              '12345',
+              'yoursite.com',
+            );
+            _chartbeatFlutterPlugin.trackView('https://google.com', 'Google');
+          },
         ),
         body: Center(
           child: Text('Running on: $_platformVersion\n'),

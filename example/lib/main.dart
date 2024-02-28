@@ -13,31 +13,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
   final _chartbeatFlutterPlugin = ChartbeatFlutter();
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
-  }
-
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    try {
-      // Attempt to get the platform version.
-      // Initialize the Chartbeat tracker.
-
-      // Track a view with viewId as "google.com" and title as "Square1".
-    } catch (error) {
-      platformVersion =
-          'Failed to get platform version or initialize Chartbeat.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
   }
 
   @override
@@ -51,13 +31,10 @@ class _MyAppState extends State<MyApp> {
           onPressed: () async {
             await _chartbeatFlutterPlugin.initializeTracker(
               '12345',
-              'yoursite.com',
+              'yourwebsite.com',
             );
             _chartbeatFlutterPlugin.trackView('https://google.com', 'Google');
           },
-        ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
         ),
       ),
     );

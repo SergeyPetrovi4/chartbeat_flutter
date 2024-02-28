@@ -36,7 +36,7 @@ public class ChartbeatFlutterPlugin: NSObject, FlutterPlugin {
   }
 
  private func initializeTracker(accountID: String, domain: String) {
-    CBTracker.shared().setupTracker(withAccountId: Int32(accountID) ?? 0, domain: domain) // Changed Int to Int32
+    CBTracker.shared().setupTracker(withAccountId: Int32(accountID) ?? 0, domain: domain) 
 }
 
 private func trackView(viewId: String, title: String, result: @escaping FlutterResult) {

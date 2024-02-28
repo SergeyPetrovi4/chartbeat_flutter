@@ -1,10 +1,10 @@
 name: chartbeat_flutter
-description: A new Flutter plugin project.
+description: Flutter plugin to use chartbeat
 version: 0.0.1
-homepage:
+repository: https://github.com/mirkancal/chartbeat_flutter
 
 environment:
-  sdk: '>=2.19.6 <3.0.0'
+  sdk: ">=2.19.6 <3.0.0"
   flutter: ">=2.5.0"
 
 dependencies:
